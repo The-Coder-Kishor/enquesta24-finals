@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Grid</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: url("./rounds/logoslides.png") no-repeat center center fixed;
+        background-size: cover;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+      }
+      .grid-container {
+        position: relative;
+        width: 800px;
+      }
+      .hidden_image {
+        width: 100%;
+        height: 98vh;
+        display: block;
+      }
+      table {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 1.5em;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 20px;
+        width: calc(100% / 4);
+        text-align: center;
+        font-size: 1.5em;
+      }
+      thead th {
+        background-color: #2563eb;
+        color: white;
+      }
+      tbody th,
+      tbody td {
+        background-color: #3b82f6;
+        color: white;
+      }
+      tbody tr {
+        height: 120px;
+      }
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: white;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .clicked {
+        background-color: gray !important;
+      }
+      .correct {
+        background-color: transparent !important;
+      }
+      .correct a {
+        display: none;
+      }
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px; /* Add margin to separate from grid */
+      }
+      .number-box-correct {
+        background-color: green;
+        color: white;
+        padding: 20px;
+        font-size: 2em;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px; /* Add margin between number boxes */
+      }
+      .number-box-incorrect {
+        background-color: red;
+        color: white;
+        padding: 20px;
+        font-size: 2em;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px; /* Add margin between number boxes */
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      .action-button {
+        background-color: #2563eb;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+      .action-button:hover {
+        background-color: #174ea6;
+      }
+      .button-30 {
+        align-items: center;
+        appearance: none;
+        background-color: #fcfcfd;
+        border-radius: 4px;
+        border-width: 0;
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+        box-sizing: border-box;
+        color: #36395a;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: "JetBrains Mono", monospace;
+        height: 48px;
+        justify-content: center;
+        line-height: 1;
+        list-style: none;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        transition: box-shadow 0.15s, transform 0.15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow, transform;
+        font-size: 18px;
+      }
+
+      .button-30:focus {
+        box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+      }
+
+      .button-30:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+        transform: translateY(-2px);
+      }
+
+      .button-30:active {
+        box-shadow: #d6d6e7 0 3px 7px inset;
+        transform: translateY(2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="grid-container">
+        <img
+          class="hidden_image"
+          src="./images/travis_scott.jpg"
+          alt="Background Image"
+        />
+        <table>
+          <tbody>
+            <tr>
+              <td><a href="/index.html#/38" id="1-1">1</a></td>
+              <td><a href="/index.html#/39" id="1-2">2</a></td>
+              <td><a href="/index.html#/40" id="1-3">3</a></td>
+              <td><a href="/index.html#/41" id="1-4">4</a></td>
+            </tr>
+            <tr>
+              <td><a href="/index.html#/42" id="2-1">5</a></td>
+              <td><a href="/index.html#/43" id="2-2">6</a></td>
+              <td><a href="/index.html#/44" id="2-3">7</a></td>
+              <td><a href="/index.html#/45" id="2-4">8</a></td>
+            </tr>
+            <tr>
+              <td><a href="/index.html#/46" id="3-1">9</a></td>
+              <td><a href="/index.html#/47" id="3-2">10</a></td>
+              <td><a href="/index.html#/48" id="3-3">11</a></td>
+              <td><a href="/index.html#/49" id="3-4">12</a></td>
+            </tr>
+            <tr>
+              <td><a href="/index.html#/50" id="4-1">13</a></td>
+              <td><a href="/index.html#/51" id="4-2">14</a></td>
+              <td><a href="/index.html#/52" id="4-3">15</a></td>
+              <td><a href="/index.html#/53" id="4-4">16</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-container">
+        <div class="number-box-correct" id="numberBox1">42</div>
+        <div class="number-box-incorrect" id="numberBox2">84</div>
+        <div class="button-container">
+          <a href="/index.html#/54"><button class="button-30" id="actionButton">NEXT ROUND</button></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Save the clicked cells to local storage
+      function loadClickedCells() {
+        const wrongCells = JSON.parse(localStorage.getItem("wrongCells")) || [];
+        const correctCells = JSON.parse(localStorage.getItem("correctCells")) || [];
+        var answered = wrongCells.length + correctCells.length;
+        
+        var correct;
+        if ((answered = 0)) {
+          correct = 100;
+        } else {
+          correct = 100 - (5 * (answered - 1));
+        }
+        var incorrect = correct / 2;
+
+        console.log(correct);
+        console.log(incorrect);
+
+        const cell_corr = document.getElementById("numberBox1");
+        cell_corr.innerHTML = correct;
+
+        correctCells.forEach((cellId) => {
+          const cell = document.querySelector(`[id="${cellId}"]`);
+          if (cell) {
+            cell.parentElement.classList.add("correct");
+          }
+        });
+
+        wrongCells.forEach((cellId) => {
+          const cell = document.querySelector(`[id="${cellId}"]`);
+          if (cell) {
+            cell.parentElement.classList.add("clicked");
+          }
+        });
+      }
+      loadClickedCells();
+      document.addEventListener("DOMContentLoaded", () => {
+        const wrongCells = JSON.parse(localStorage.getItem("wrongCells")) || [];
+        const correctCells =
+          JSON.parse(localStorage.getItem("correctCells")) || [];
+        var answered = wrongCells.length + correctCells.length;
+        var correct;
+        console.log(answered);
+        if (answered == 0) {
+          correct = 100;
+        } else {
+          correct = 100 - (5 * (answered - 1));
+        }
+        var incorrect = (correct / 2)|0;
+
+        // Logging values for debugging
+        console.log("Correct:", correct, "Incorrect:", incorrect);
+
+        // Now setting the innerText
+        document.getElementById("numberBox1").innerText = correct;
+        document.getElementById("numberBox2").innerText = incorrect;
+      });
+    </script>
+  </body>
+</html>

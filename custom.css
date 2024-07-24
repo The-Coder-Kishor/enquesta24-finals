@@ -1,0 +1,21 @@
+section {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.r-fit-text {
+    font-size: 34px !important;
+    text-align: justify !important;
+}
+.slides {
+    margin: none !important;
+    width: 1250px !important;
+}
+.reveal-viewport {
+    --slide-width: 1920px !important;
+    --slide-height: 1080px !important;
+}
+p {
+    color: azure;
+}
